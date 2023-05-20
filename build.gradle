@@ -1,0 +1,75 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.mygame'
+version '1.0'
+
+mainClassName = "com.mygame.Main"
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'https://jitpack.io' }
+}
+
+project.ext {
+  jmeVer = '3.6.0-stable'
+}
+
+project(":assets") {
+    apply plugin: "java"
+
+    buildDir = rootProject.file("build/assets")
+
+    sourceSets {
+        main {
+            resources {
+                srcDir '.'
+            }
+        }
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+}
+
+dependencies {
+
+  // Core JME
+  implementation "org.jmonkeyengine:jme3-core:$jmeVer"
+  implementation "org.jmonkeyengine:jme3-desktop:$jmeVer"
+  implementation "org.jmonkeyengine:jme3-lwjgl3:$jmeVer"
+
+  // Suppress errors / warnings building in SDK
+  implementation "org.jmonkeyengine:jme3-jogg:$jmeVer"
+  implementation "org.jmonkeyengine:jme3-plugins:$jmeVer"
+  
+  // Physics Library
+  implementation "com.github.stephengold:Minie:7.5.0"
+
+  // Additional Libraries
+
+  // Assets sub-project
+  runtimeOnly project(':assets')
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': "$mainClassName"
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+wrapper {
+    gradleVersion = '7.6'
+}

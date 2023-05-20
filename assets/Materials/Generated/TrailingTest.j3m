@@ -1,0 +1,10 @@
+Material My Material : Common/MatDefs/Misc/UnshadedNodes.j3md {
+     MaterialParameters {
+        ColorMap : Repeat "Textures/trail2.png"
+     }
+    AdditionalRenderState {
+      ColorWrite On
+      Blend Additive
+      DepthTest On
+    }
+}
