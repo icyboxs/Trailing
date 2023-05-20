@@ -216,10 +216,10 @@ public class MinieMovementControl extends BaseAppState implements ActionListener
          }
          if(V == name){
                 if(bln){
-                    System.err.println("按下V");
+                    System.err.println("按下v");
                     
                 }else if(!bln){
-                    System.err.println("弹起V");
+                    System.err.println("弹起v");
                     
                 }    
             }
